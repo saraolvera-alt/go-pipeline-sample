@@ -1,0 +1,34 @@
+pipeline:
+  identifier: Build_go_pipeline_sample_1695359385749
+  name: Build go-pipeline-sample
+  orgIdentifier: default
+  projectIdentifier: default_project
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1695359370983
+        repoName: 00savi/go-pipeline-sample
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: gobuild
+                  name: go_build
+                  spec:
+                    shell: Sh
+                    command: echo "hello i'm vinay"
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
